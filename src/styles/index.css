@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  :root,
+  .theme-dark {
+    --color-bg: 10, 10, 15;
+    --color-panel: 20, 20, 30;
+    --color-panel-hover: 30, 30, 45;
+    --color-border: 255, 255, 255;
+    --panel-opacity: 0.6;
+    --panel-hover-opacity: 0.8;
+    --border-opacity: 0;
+  }
+
+  .theme-midnight {
+    --color-bg: 3, 7, 18;
+    --color-panel: 15, 23, 42;
+    --color-panel-hover: 30, 41, 59;
+    --color-border: 56, 189, 248;
+    --panel-opacity: 0.7;
+    --panel-hover-opacity: 0.9;
+    --border-opacity: 0;
+  }
+
+  .theme-dracula {
+    --color-bg: 40, 42, 54;
+    --color-panel: 68, 71, 90;
+    --color-panel-hover: 98, 114, 164;
+    --color-border: 189, 147, 249;
+    --panel-opacity: 0.6;
+    --panel-hover-opacity: 0.9;
+    --border-opacity: 0;
+  }
+
+  body {
+    @apply bg-background text-white antialiased;
+
+    /* Custom scrollbar */
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  /* Support for frameless window dragging */
+  .titlebar-drag-region {
+    -webkit-app-region: drag;
+  }
+
+  .no-drag {
+    -webkit-app-region: no-drag;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-panel backdrop-blur-xl border border-border shadow-lg relative overflow-hidden;
+  }
+
+  /* Adding a subtle neon glow effect */
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.03), transparent 50%),
+      radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.05), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Custom scrollbar utility */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Monaco Ghost Text ──────────────────────────────────────── */
+.ghost-text-decoration {
+  color: rgba(156, 163, 175, 0.45) !important;
+  font-style: italic !important;
+  pointer-events: none !important;
+}
+
+/* ── xterm.js custom background ────────────────────────────── */
+.xterm {
+  background: transparent !important;
+}
+
+.xterm-screen {
+  background: transparent !important;
+}
+
+.xterm-viewport::-webkit-scrollbar {
+  width: 4px;
+}
+
+.xterm-viewport::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+}
