@@ -25,3 +25,10 @@ dist-ssr
 
 # Electron
 dist-electron
+
+# Environment / API keys — NEVER commit these
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
